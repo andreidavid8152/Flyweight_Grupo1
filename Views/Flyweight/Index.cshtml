@@ -1,0 +1,37 @@
+﻿@model List<Flyweight_Grupo1.Models.LibroViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Libros";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'">Crear Nuevo Libro</button>
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Género</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var libro in Model)
+        {
+            <tr>
+                <td>@libro.Titulo</td>
+                <td>@libro.Autor</td>
+                <td>@libro.Genero</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+
+<h3>Eficiencia del Patrón Flyweight</h3>
+<p>Total de Libros: @ViewBag.TotalLibros</p>
+<p>Total de Autores Únicos: @ViewBag.TotalAutoresUnicos</p>
+<p>Total de Géneros Únicos: @ViewBag.TotalGenerosUnicos</p>

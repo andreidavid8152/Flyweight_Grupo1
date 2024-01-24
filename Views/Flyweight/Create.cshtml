@@ -1,0 +1,55 @@
+﻿@model Flyweight_Grupo1.Models.Libro
+@using Flyweight_Grupo1.Models
+
+@{
+    ViewData["Title"] = "Crear Libro";
+
+    // Suponiendo que el controlador pasa estas listas
+    var autores = ViewBag.Autores as List<Autor>;
+    var generos = ViewBag.Generos as List<Genero>;
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Titulo" class="control-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label asp-for="AutorId" class="control-label"></label>
+        <select asp-for="AutorId" class="form-control" asp-items="@(new SelectList(autores, "AutorId", "Nombre"))">
+            <option value="">-- Selecciona un Autor --</option>
+        </select>
+        <span asp-validation-for="AutorId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+
+    <div class="form-group">
+        <label asp-for="GeneroId" class="control-label"></label>
+        <select asp-for="GeneroId" class="form-control" asp-items="@(new SelectList(generos, "GeneroId", "Descripcion"))">
+            <option value="">-- Selecciona un Género --</option>
+        </select>
+        <span asp-validation-for="GeneroId" class="text-danger"></span>
+    </div>
+
+    <br />
+
+
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-success" />
+    </div>
+</form>
+
+<br />
+
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Volver a la lista</a>
+</div>
